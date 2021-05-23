@@ -16,6 +16,7 @@ namespace LivemusicLovers.Controllers
             _context = new ApplicationDbContext();
         }
 
+        [ValidateAntiForgeryToken]
         [Authorize]
         public ActionResult Create()
         {
@@ -27,6 +28,7 @@ namespace LivemusicLovers.Controllers
             return View(viewModel);
         }
 
+        [ValidateAntiForgeryToken]
         [Authorize]
         [HttpPost]
         public ActionResult Create(GigFormViewModel viewModel)
