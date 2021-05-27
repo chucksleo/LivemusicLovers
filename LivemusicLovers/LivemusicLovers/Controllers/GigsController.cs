@@ -1,7 +1,6 @@
 ﻿using LivemusicLovers.Models;
 using LivemusicLovers.ViewModels;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -16,7 +15,6 @@ namespace LivemusicLovers.Controllers
             _context = new ApplicationDbContext();
         }
 
-        [ValidateAntiForgeryToken]
         [Authorize]
         public ActionResult Create()
         {
