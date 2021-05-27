@@ -22,6 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+span.field-validation-error {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+}
 
 /* Bootstrap Overrides */
 .navbar-inverse {
@@ -45,8 +50,8 @@ textarea {
     box-shadow: none;
 }
 
-navbar-brand {
-    font-weight: 900;
+.navbar-brand {
+    font-weight: bolder;
 }
 
 body {
