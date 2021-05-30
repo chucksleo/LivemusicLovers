@@ -10,7 +10,7 @@ namespace LivemusicLovers.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public HomeController()
         {
@@ -20,6 +20,7 @@ namespace LivemusicLovers.Controllers
         {
             var upcomingGigs = _context.Gigs
                 .Include(g => g.Artist)
+                .Include(g => g.Genre)
                 .Where(g => g.DateTime > DateTime.Now);
 
             return View(upcomingGigs);
