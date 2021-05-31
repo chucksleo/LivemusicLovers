@@ -7,30 +7,29 @@ using System.Web.Http;
 namespace LivemusicLovers.Controllers
 {
     [Authorize]
-    public class AttendancesController : ApiController
+    public class FollowingsController : ApiController
     {
         private readonly ApplicationDbContext _context;
 
-        public AttendancesController()
+        public FollowingsController()
         {
             _context = new ApplicationDbContext();
         }
 
         [HttpPost]
-        public IHttpActionResult Attend(AttendanceDto dto)
+        public IHttpActionResult Follow(FollowingDto dto)
         {
             var userId = User.Identity.GetUserId();
 
-            var exists = _context.Attendances.Any(a => a.AttendeeId == userId && a.GigId == dto.GigId);
-            if (exists)
-                return BadRequest("The attendance already exists.");
+            if (_context.Followings.Any(f => f.FolloweeId == userId && f.FolloweeId == dto.FolloweeId))
+                return BadRequest("Following already exists.");
 
-            var attendance = new Attendance
+            var following = new Following
             {
-                GigId = dto.GigId,
-                AttendeeId = userId
+                FollowerId = userId,
+                FolloweeId = dto.FolloweeId
             };
-            _context.Attendances.Add(attendance);
+            _context.Followings.Add(following);
             _context.SaveChanges();
 
             return Ok();
