@@ -39,4 +39,10 @@ namespace LivemusicLovers.Models
 
         public string Code { get; set; }
     }
+
+    public class ExternalLoginListViewModel
+    {
+        public string ReturnUrl { get; set; }
+    }
+
 }
