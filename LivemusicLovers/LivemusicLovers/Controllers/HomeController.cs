@@ -1,11 +1,9 @@
 ﻿using LivemusicLovers.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using System.Web.Mvc;
 using LivemusicLovers.ViewModels;
+using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace LivemusicLovers.Controllers
 {
@@ -22,7 +20,8 @@ namespace LivemusicLovers.Controllers
             var upcomingGigs = _context.Gigs
                 .Include(g => g.Artist)
                 .Include(g => g.Genre)
-                .Where(g => g.DateTime > DateTime.Now);
+                .Where(g => g.DateTime > DateTime.Now &&
+                !g.IsCanceled == false);
 
             var viewModel = new GigsViewModel
             {

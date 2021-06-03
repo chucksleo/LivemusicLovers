@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Http;
 
-namespace LivemusicLovers.Controllers
+namespace LivemusicLovers.Api
 {
     [Authorize]
     public class FollowingsController : ApiController
